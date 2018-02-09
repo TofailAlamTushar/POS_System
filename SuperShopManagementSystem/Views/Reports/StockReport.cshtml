@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SuperShopManagementSystem.Models.ViewModel.StockVm>
+
+@{
+    ViewBag.Title = "StockReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Stock Report</h4>
+    <hr />
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("OutletId", "Outlet", htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.DropDownList("OutletId", ViewBag.OutletId as SelectList, "Select One", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessage("OutletId", "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" name="Show" id="ShowButton" value="Show" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model != null)
+            {
+                <p>@Html.ActionLink("Download Pdf", "ExportStockReportPdf", "Reports", new { @class = "btn btn-info btn-sm", target = "_blank" })</p>
+            }
+            <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+                <tr style="background-color:cornflowerblue; color:white">
+                    <th>
+                        Sl
+                    </th>
+                    <th>
+                        Item Name
+                    </th>
+                    <th>
+                        Category Full Path
+                    </th>
+                    <th>
+                        Stock Quantity
+                    </th>
+                    <th>
+                        Avegare Price
+                    </th>
+                </tr>
+                @if (Model != null)
+                {
+                    int sl = 0;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@(++sl)</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ItemName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryFullPath)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StockQuantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+    </div>
+}
+

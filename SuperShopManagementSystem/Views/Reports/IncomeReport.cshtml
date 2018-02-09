@@ -1,0 +1,144 @@
+﻿@model SuperShopManagementSystem.Models.ViewModel.IncomeVm
+
+@{
+    ViewBag.Title = "IncomeReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>Income Report</h2>
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("OutletId", "Outlet", htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("OutletId", ViewBag.OutletId as SelectList, "Select One", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessage("OutletId", "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("FromDate", "From Date", htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.Editor("FromDate", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessage("FromDate", "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("ToDate", "From Date", htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.Editor("ToDate", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessage("ToDate", "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-offset-10 col-md-2">
+                <input type="submit" name="Show" id="ShowButton" value="Show" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model != null)
+            {
+                <p>@Html.ActionLink("Download Pdf", "ExportIncomePdf", "Reports",new { @class = "btn btn-info btn-sm", target = "_blank" })</p>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Sales Report</h4>
+            <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+                <tr style="background-color:cornflowerblue; color:white">
+                    <td>Sl</td>
+                    <td>Date</td>
+                    <td>Customer Name</td>
+                    <td>Sales Amount</td>
+                </tr>
+                @if (Model != null)
+                {
+                    int sl = 0;
+                    foreach (var item in Model.Sales)
+                    {
+                        <tr>
+                            <td>@(++sl)</td>
+                            <td>@item.SaleDate</td>
+                            <td>@item.CusName</td>
+                            <td>@item.Total</td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h4>Purchase Report</h4>
+            <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+                <tr style="background-color:cornflowerblue; color:white">
+                    <td>Sl</td>
+                    <td>Date</td>
+                    <td>Supplier Name</td>
+                    <td>Purchase Amount</td>
+                </tr>
+                @if (Model != null)
+                {
+                    int sl = 0;
+                    foreach (var item in Model.Purchases)
+                    {
+                        <tr>
+                            <td>@(++sl)</td>
+                            <td>@item.PurchaseDate</td>
+                            <td>@item.Party.Name</td>
+                            <td>@item.Total</td>
+                        </tr>
+                    }
+                }
+
+            </table>
+
+        </div>
+    </div>
+    if (Model != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Summary</h4>
+                <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+                    <tr style="background-color:cornflowerblue; color:white">
+                        <th>
+                            Total Sales
+                        </th>
+                        <th>
+                            Total Purchase
+                        </th>
+                        <th>
+                            Total Profit
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.SalesTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.PurchasesTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.TotalIncome)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+
+}
+
+

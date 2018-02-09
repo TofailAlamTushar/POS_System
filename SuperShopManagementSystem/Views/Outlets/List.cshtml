@@ -1,0 +1,117 @@
+﻿@model IEnumerable<SuperShopManagementSystem.Models.Outlet>
+
+@{
+    ViewBag.Title = "List";
+}
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">List of Outlets</label>
+        <div class="col-md-10">@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-sm btn-primary" })</div>
+    </div>
+</div>
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-bordered table-condensed table-striped table-responsive List-table">
+            <thead>
+                <tr>
+                    <th>
+                        Organization Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContactNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="DelRow_@item.Id">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Organization.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" })
+                            <a class="btn btn-sm btn-danger delete_link" href="#" onclick="GetDeleteId(@item.Id)">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+@Html.Hidden("DeleteId")
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <h3 class="modal-title">Confirm to Delete Item Category</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure you want to Delete this Item Category ?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <input type="button" class="btn btn-danger" value="Confirm Delete" id="btnConfirmDelete" />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        var GetDeleteId = function (Id) {
+            $("#DeleteId").val(Id);
+            $("#myModal").modal("show");
+        }
+        $("#btnConfirmDelete").on("click", function () {
+            var deleteId = $("#DeleteId").val();
+            $.ajax({
+                url: "/Outlets/Delete",
+                data: { id: deleteId },
+                method: "post",
+                success: function (response) {
+                    if (response == 1) {
+                        $("#myModal").modal("hide");
+                        $("#DelRow_" + deleteId).remove();
+                    }
+                }
+            })
+        })
+    </script>
+}

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SuperShopManagementSystem.Models.ViewModel.StockVm>
+
+@{
+    ViewBag.Title = "StockReportPdf";
+    Layout = "~/Views/Shared/_LayoutPdf.cshtml";
+}
+
+<h4>Stock Report</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+            <tr style="background-color:cornflowerblue; color:white">
+                <th>
+                    Sl
+                </th>
+                <th>
+                    Item Name
+                </th>
+                <th>
+                    Category Full Path
+                </th>
+                <th>
+                    Stock Quantity
+                </th>
+                <th>
+                    Avegare Price
+                </th>
+            </tr>
+            @if (Model != null)
+            {
+                int sl = 0;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(++sl)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ItemName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryFullPath)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StockQuantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

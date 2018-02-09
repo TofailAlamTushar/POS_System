@@ -1,0 +1,77 @@
+﻿@model SuperShopManagementSystem.Models.Operation.Purchase
+
+@{
+    ViewBag.Title = "DetailsPdf";
+    Layout = "~/Views/Shared/_LayoutPdf.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+
+        <h4>Purchase Result</h4>
+        <hr />
+        <table>
+            <tr>
+                <td> Purchase By :</td>
+                <td>&nbsp;@Html.DisplayFor(model => model.Employee.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Outlet.Name) :</td>
+                <td>&nbsp; @Html.DisplayFor(model => model.Outlet.Name)</td>
+            </tr>
+            <tr>
+                <td>Supplier Name :</td>
+                <td>&nbsp; @Html.DisplayFor(model => model.Party.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.PurchaseDate) :</td>
+                <td>&nbsp;@Html.DisplayFor(model => model.PurchaseDate)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Remarks) :</td>
+                <td>&nbsp;@Html.DisplayFor(model => model.Remarks)</td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+        <h4>Item Details</h4>
+        <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+            <tr style="background-color:cornflowerblue; color:white;">
+                <th>Sl</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Line Price</th>
+            </tr>
+            @{ int sl = 1;}
+            @foreach (var item in Model.PurchaseDetail)
+            {
+                var linePrice = item.Price * item.Quntity;
+                <tr>
+                    <td>@sl</td>
+                    <td>@item.Item.Name</td>
+                    <td>@item.Quntity</td>
+                    <td>@item.Price</td>
+                    <td>@linePrice</td>
+                </tr>
+                sl++;
+            }
+        </table>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="col-md-4" style="float:right">
+        <table>
+            <tr>
+                <td> @Html.DisplayNameFor(model => model.Total) :</td>
+                <td>&nbsp;@Html.DisplayFor(model => model.Total)</td>
+            </tr>
+            <tr>
+                <td> @Html.DisplayNameFor(model => model.DueAmount) :</td>
+                <td>&nbsp; @Html.DisplayFor(model => model.DueAmount)</td>
+            </tr>
+        </table>
+    </div>
+</div>

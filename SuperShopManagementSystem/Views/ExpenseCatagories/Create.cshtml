@@ -1,0 +1,156 @@
+﻿@model SuperShopManagementSystem.Models.ExpenseCatagory
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "ExpenseCatagories", FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-horizontal">
+                    <h4>Create An Expense Catagory</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-offset-2">
+                            <div class="col-md-6">
+                                @Html.RadioButton("RadioCatagory", "Root", true) Root
+                            </div>
+                            <div class="col-md-6">
+                                @Html.RadioButton("RadioCatagory", "Child") Child
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, "Category Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group" id="parentCategory">
+                        @Html.LabelFor(model => model.ParentId, "Parent Category", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(m => m.ParentId, ViewBag.ParentId as SelectList, "Select One", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ParentId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.Code, new { Value = ViewBag.autoCode, @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            <input type="file" name="ImageFile" id="Image" />
+                            <br>
+                            <div class="col-md-6">
+                                <div id="imagePreview" class="thumbnail" style="display:none">
+                                    <img class="img-responsive" id="TargetImage" />
+                                </div>
+                                <div class="">
+                                    <p id="Imagedescription"></p>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-4">
+                            <input type="submit" value="Create" id="btnCreate" class="btn btn-success" />
+                        </div>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="col-md-6">
+                                <p class="text-danger"> @ViewBag.Message</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "List", "ExpenseCatagories")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+    <script>
+        //this is for hiding parent category:
+            $("#parentCategory").hide();
+            $('input[name="RadioCatagory"]').on("change", function () {
+                var catagoryValue = $("input[name='RadioCatagory']:checked").val();
+
+                if (catagoryValue == "Root") {
+                    $("#parentCategory").hide();
+                }
+
+                if (catagoryValue == "Child") {
+                    //$.ajax({
+                    //    url:"/ExpenseCatagories/GetParentCategories",
+                    //    type:"post",
+                    //    data: "",
+                    //    success: function (feedback) {
+                    //        if (feedback != null) {
+                    //            $("#ParentId").empty();
+                    //            $("ParentId").html("<option> Select One </option>");
+
+                    //            $.each(feedback, function (index, value) {
+                    //                $("ParentId").append("<option> value='" + value.Id + "'>" + value.Name + "</option>");
+                    //            });
+                    //        }
+                    //    }
+                    //});
+                    $("#parentCategory").show();
+                }
+            });
+
+        //this is for showing image immediately:
+        $("#Image").change(function () {
+            var file = this.files;
+            if (file && file[0]) {
+                ReadImage(file[0]);
+            }
+        });
+        var ReadImage = function (file) {
+            var reader = new FileReader;
+            var image = new Image;
+            reader.readAsDataURL(file);
+            reader.onload = function (_file) {
+                image.src = _file.target.result;
+                $("#TargetImage").attr("src", _file.target.result);
+                image.onload = function () {
+                    var height = this.height;
+                    var width = this.width;
+                    var type = file.type;
+
+                    var value = (file.size / 1024)
+                    var size = Math.round(value * 100) / 100 + " KB";
+
+                    $("#TargetImage").attr("src", _file.target.result);
+                    $("#Imagedescription").html("Size: " + size + '</br>' + "Dimension: " + height + " × " + width);
+                    $("#imagePreview").show();
+                }
+            }
+        }
+    </script>
+}

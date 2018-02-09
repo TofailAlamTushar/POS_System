@@ -1,0 +1,97 @@
+﻿@model SuperShopManagementSystem.Models.Operation.Expense
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-offset-1">
+        <div class="col-md-11">
+            <table>
+                <tr>
+                    <td><h4>Expense Result</h4></td>
+                    <td>&nbsp; @Html.ActionLink("Download Pdf", "ExportPdf", "Expenses", new { id = Model.Id }, new { @class = "btn btn-info btn-sm", target = "_blank" }) </td>
+                </tr>
+            </table>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Employee Name
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Employee.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Outlet.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Outlet.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExpenseDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExpenseDate)
+                </dd>
+
+
+            </dl>
+            <div class="col-md-12">
+                <h4>Expense Item Details</h4>
+                <table class="table table-bordered table-responsive table-hover table-striped table-condensed table">
+                    <tr style="background-color:cornflowerblue; color:white">
+                        <th>Sl</th>
+                        <th>Expense Item</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                        <th>Line Price</th>
+                    </tr>
+                    @{ int sl = 1;}
+                    @foreach (var item in Model.ExpenseDetails)
+                    {
+                        var linePrice = item.Amount * item.Quantity;
+                        <tr>
+                            <td>@sl</td>
+                            <td>@item.ExpenseItem.Name</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Amount</td>
+                            <td>@linePrice</td>
+                        </tr>
+                        sl++;
+                    }
+                </table>
+            </div>
+            <div class="col-md-offset-8 col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Total)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Total)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Due)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Due)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-2">
+    @Html.ActionLink("Back to List", "List", "Expenses")
+</div>
+<div class="col-md-offset-8 col-md-2">
+    @Html.ActionLink("Go to Reports", "Expense", "Reports")
+</div>
