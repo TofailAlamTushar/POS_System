@@ -13,7 +13,7 @@ namespace SuperShopManagementSystem.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201908270830489_InitialMigration"; }
+            get { return "201908271156411_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source
