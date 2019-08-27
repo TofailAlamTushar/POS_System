@@ -196,89 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801151536565_InitialCreate.cs" />
-    <Compile Include="Migrations\201801151536565_InitialCreate.Designer.cs">
-      <DependentUpon>201801151536565_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801152036536_annotations_add.cs" />
-    <Compile Include="Migrations\201801152036536_annotations_add.Designer.cs">
-      <DependentUpon>201801152036536_annotations_add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801211402146_image_not_required.cs" />
-    <Compile Include="Migrations\201801211402146_image_not_required.Designer.cs">
-      <DependentUpon>201801211402146_image_not_required.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801291215591_Item_and_ItemCategory_Added.cs" />
-    <Compile Include="Migrations\201801291215591_Item_and_ItemCategory_Added.Designer.cs">
-      <DependentUpon>201801291215591_Item_and_ItemCategory_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801301559012_itemCostTypeChanged.cs" />
-    <Compile Include="Migrations\201801301559012_itemCostTypeChanged.Designer.cs">
-      <DependentUpon>201801301559012_itemCostTypeChanged.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801301708288_Annotation_Added_Item.cs" />
-    <Compile Include="Migrations\201801301708288_Annotation_Added_Item.Designer.cs">
-      <DependentUpon>201801301708288_Annotation_Added_Item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801302239596_Org_Outlet_Party_Emp_Model_Added.cs" />
-    <Compile Include="Migrations\201801302239596_Org_Outlet_Party_Emp_Model_Added.Designer.cs">
-      <DependentUpon>201801302239596_Org_Outlet_Party_Emp_Model_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801311141007_NameAddedInOutlet.cs" />
-    <Compile Include="Migrations\201801311141007_NameAddedInOutlet.Designer.cs">
-      <DependentUpon>201801311141007_NameAddedInOutlet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802011129442_Sale_SalsDetail_Added.cs" />
-    <Compile Include="Migrations\201802011129442_Sale_SalsDetail_Added.Designer.cs">
-      <DependentUpon>201802011129442_Sale_SalsDetail_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802011445456_Purchase_PurchaseDetail_Added.cs" />
-    <Compile Include="Migrations\201802011445456_Purchase_PurchaseDetail_Added.Designer.cs">
-      <DependentUpon>201802011445456_Purchase_PurchaseDetail_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802031442021_Purchase_Updated.cs" />
-    <Compile Include="Migrations\201802031442021_Purchase_Updated.Designer.cs">
-      <DependentUpon>201802031442021_Purchase_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802031617504_Purchase_Updated_Twice.cs" />
-    <Compile Include="Migrations\201802031617504_Purchase_Updated_Twice.Designer.cs">
-      <DependentUpon>201802031617504_Purchase_Updated_Twice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802041120383_Purchase_ForaignKey_Solution.cs" />
-    <Compile Include="Migrations\201802041120383_Purchase_ForaignKey_Solution.Designer.cs">
-      <DependentUpon>201802041120383_Purchase_ForaignKey_Solution.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802050018351_Sale_Updated.cs" />
-    <Compile Include="Migrations\201802050018351_Sale_Updated.Designer.cs">
-      <DependentUpon>201802050018351_Sale_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802051519379_Expense_And_ExpenseDetail_Added.cs" />
-    <Compile Include="Migrations\201802051519379_Expense_And_ExpenseDetail_Added.Designer.cs">
-      <DependentUpon>201802051519379_Expense_And_ExpenseDetail_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052009230_ExpenseDetails_Updated.cs" />
-    <Compile Include="Migrations\201802052009230_ExpenseDetails_Updated.Designer.cs">
-      <DependentUpon>201802052009230_ExpenseDetails_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052039218_ExpenseDetails_Updated_twice.cs" />
-    <Compile Include="Migrations\201802052039218_ExpenseDetails_Updated_twice.Designer.cs">
-      <DependentUpon>201802052039218_ExpenseDetails_Updated_twice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052110565_ExpenseItem_Updated.cs" />
-    <Compile Include="Migrations\201802052110565_ExpenseItem_Updated.Designer.cs">
-      <DependentUpon>201802052110565_ExpenseItem_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052218421_ExpenseDetails_Updated_3rd.cs" />
-    <Compile Include="Migrations\201802052218421_ExpenseDetails_Updated_3rd.Designer.cs">
-      <DependentUpon>201802052218421_ExpenseDetails_Updated_3rd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052241128_ExpenseDetails_Updated_4th.cs" />
-    <Compile Include="Migrations\201802052241128_ExpenseDetails_Updated_4th.Designer.cs">
-      <DependentUpon>201802052241128_ExpenseDetails_Updated_4th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802072236231_IncomeVm_Added.cs" />
-    <Compile Include="Migrations\201802072236231_IncomeVm_Added.Designer.cs">
-      <DependentUpon>201802072236231_IncomeVm_Added.cs</DependentUpon>
+    <Compile Include="Migrations\201908270830489_InitialMigration.cs" />
+    <Compile Include="Migrations\201908270830489_InitialMigration.Designer.cs">
+      <DependentUpon>201908270830489_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Common.cs" />
@@ -467,68 +387,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801151536565_InitialCreate.resx">
-      <DependentUpon>201801151536565_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801152036536_annotations_add.resx">
-      <DependentUpon>201801152036536_annotations_add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801211402146_image_not_required.resx">
-      <DependentUpon>201801211402146_image_not_required.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801291215591_Item_and_ItemCategory_Added.resx">
-      <DependentUpon>201801291215591_Item_and_ItemCategory_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801301559012_itemCostTypeChanged.resx">
-      <DependentUpon>201801301559012_itemCostTypeChanged.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801301708288_Annotation_Added_Item.resx">
-      <DependentUpon>201801301708288_Annotation_Added_Item.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801302239596_Org_Outlet_Party_Emp_Model_Added.resx">
-      <DependentUpon>201801302239596_Org_Outlet_Party_Emp_Model_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801311141007_NameAddedInOutlet.resx">
-      <DependentUpon>201801311141007_NameAddedInOutlet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802011129442_Sale_SalsDetail_Added.resx">
-      <DependentUpon>201802011129442_Sale_SalsDetail_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802011445456_Purchase_PurchaseDetail_Added.resx">
-      <DependentUpon>201802011445456_Purchase_PurchaseDetail_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802031442021_Purchase_Updated.resx">
-      <DependentUpon>201802031442021_Purchase_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802031617504_Purchase_Updated_Twice.resx">
-      <DependentUpon>201802031617504_Purchase_Updated_Twice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802041120383_Purchase_ForaignKey_Solution.resx">
-      <DependentUpon>201802041120383_Purchase_ForaignKey_Solution.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802050018351_Sale_Updated.resx">
-      <DependentUpon>201802050018351_Sale_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802051519379_Expense_And_ExpenseDetail_Added.resx">
-      <DependentUpon>201802051519379_Expense_And_ExpenseDetail_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052009230_ExpenseDetails_Updated.resx">
-      <DependentUpon>201802052009230_ExpenseDetails_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052039218_ExpenseDetails_Updated_twice.resx">
-      <DependentUpon>201802052039218_ExpenseDetails_Updated_twice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052110565_ExpenseItem_Updated.resx">
-      <DependentUpon>201802052110565_ExpenseItem_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052218421_ExpenseDetails_Updated_3rd.resx">
-      <DependentUpon>201802052218421_ExpenseDetails_Updated_3rd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052241128_ExpenseDetails_Updated_4th.resx">
-      <DependentUpon>201802052241128_ExpenseDetails_Updated_4th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802072236231_IncomeVm_Added.resx">
-      <DependentUpon>201802072236231_IncomeVm_Added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908270830489_InitialMigration.resx">
+      <DependentUpon>201908270830489_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

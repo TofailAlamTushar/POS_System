@@ -7,13 +7,13 @@ namespace SuperShopManagementSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ExpenseDetails_Updated_twice : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ExpenseDetails_Updated_twice));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802052039218_ExpenseDetails_Updated_twice"; }
+            get { return "201908270830489_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source
