@@ -20,7 +20,7 @@ namespace SuperShopManagementSystem
             app.CreatePerOwinContext(ShopDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
-
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

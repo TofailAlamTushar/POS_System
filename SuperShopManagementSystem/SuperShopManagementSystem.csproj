@@ -210,6 +210,7 @@
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\Operation\SalesController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="DAL\CommonDal.cs" />
     <Compile Include="DAL\EmployeeDal.cs" />
     <Compile Include="DAL\ExpenseCatagoryDal.cs" />
@@ -230,7 +231,12 @@
     <Compile Include="Migrations\201908271156411_InitialMigration.Designer.cs">
       <DependentUpon>201908271156411_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908280604193_role.cs" />
+    <Compile Include="Migrations\201908280604193_role.Designer.cs">
+      <DependentUpon>201908280604193_role.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -251,6 +257,7 @@
     <Compile Include="Models\ViewModel\IncomeVm.cs" />
     <Compile Include="Models\ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\ViewModel\ReportVm.cs" />
+    <Compile Include="Models\ViewModel\RoleViewModel.cs" />
     <Compile Include="Models\ViewModel\StockVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -403,6 +410,11 @@
     <Content Include="Views\Reports\StockReportPdf.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -425,6 +437,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908271156411_InitialMigration.resx">
       <DependentUpon>201908271156411_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908280604193_role.resx">
+      <DependentUpon>201908280604193_role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

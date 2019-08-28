@@ -59,5 +59,6 @@ namespace SuperShopManagementSystem.Context
         {
             return new ShopDbContext();
         }
+
     }
 }

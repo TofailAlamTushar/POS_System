@@ -134,3 +134,4 @@ C:\Profesional Projects\POS(Versity)\POS_System\SuperShopManagementSystem\bin\Mi
 C:\Profesional Projects\POS(Versity)\POS_System\SuperShopManagementSystem\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Profesional Projects\POS(Versity)\POS_System\SuperShopManagementSystem\obj\Debug\SuperShopManagementSystem.Migrations.InitialMigration.resources
 C:\Profesional Projects\POS(Versity)\POS_System\SuperShopManagementSystem\obj\Debug\SuperShopManagementSystem.csproj.GenerateResource.cache
+C:\Profesional Projects\POS(Versity)\POS_System\SuperShopManagementSystem\obj\Debug\SuperShopManagementSystem.Migrations.role.resources
