@@ -53,7 +53,7 @@ namespace SuperShopManagementSystem.Controllers
         public async Task<ActionResult> Create(RoleViewModel model)
         {
             var role = new ApplicationRole() { Name = model.Name };
-            await RoleManager.CreateAsync(role);
+            var result = await RoleManager.CreateAsync(role);
             return RedirectToAction("Index");
         }
 
@@ -66,8 +66,8 @@ namespace SuperShopManagementSystem.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(RoleViewModel model)
         {
-            var role = new ApplicationRole() { Name = model.Name };
-            await RoleManager.UpdateAsync(role);
+            var role = new ApplicationRole() {Id=model.Id, Name = model.Name };
+            var result = await RoleManager.UpdateAsync(role);
             return RedirectToAction("Index");
         }
 
@@ -87,7 +87,7 @@ namespace SuperShopManagementSystem.Controllers
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             var role = await RoleManager.FindByIdAsync(id);
-            await RoleManager.DeleteAsync(role);
+            var result = await RoleManager.DeleteAsync(role);
             return RedirectToAction("Index");
         }
     }

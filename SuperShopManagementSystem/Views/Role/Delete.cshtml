@@ -21,7 +21,7 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("DeleteConfirmed","Role",new { id=Model.Id })) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
