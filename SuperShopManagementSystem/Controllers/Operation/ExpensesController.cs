@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers.Operation
 {
+    [Authorize(Roles ="Admin")]
     public class ExpensesController : Controller
     {
         ExpenseBll expenseBll = new ExpenseBll();

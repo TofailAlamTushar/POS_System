@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class ItemCategoriesController : Controller
     {
         ShopDbContext db = new ShopDbContext();

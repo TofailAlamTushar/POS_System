@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class PartiesController : Controller
     {
         Common common = new Common();

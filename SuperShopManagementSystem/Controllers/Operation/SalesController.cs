@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers.Operation
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class SalesController : Controller
     {
         // GET: Sales

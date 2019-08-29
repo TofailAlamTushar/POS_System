@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         private ApplicationRoleManager _roleManager;

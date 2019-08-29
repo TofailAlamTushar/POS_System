@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers.Operation
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class PurchasesController : Controller
     {
      

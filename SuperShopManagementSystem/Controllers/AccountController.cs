@@ -107,7 +107,7 @@ namespace SuperShopManagementSystem.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        
         public ActionResult Register()
         {
             List<SelectListItem> list = new List<SelectListItem>();
@@ -119,8 +119,7 @@ namespace SuperShopManagementSystem.Controllers
 
         //
         // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost]        
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {

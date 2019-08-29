@@ -37,11 +37,11 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="~/Theme/index2.html" class="logo">
+            @Html.ActionLink("SuperShop Dokandari","Index","Home", routeValues: null, htmlAttributes: new { @class = "logo" })
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>LT</span>
+                @*<span class="logo-mini"><b>S</b>D</span>*@
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Super </b>Shop</span>
+                @*<span class="logo-lg"><b>Super </b>Shop</span>*@
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -124,7 +124,7 @@
                     </div>
                     <div class="pull-left info">
                         <p>@Context.User.Identity.Name</p>
-                        @*<a href="#"><i class="fa fa-circle text-success"></i> Online</a>*@
+                        @*<a href="#"><i class="fa fa-circle text-success"></i> Online</a>*@                        
                     </div>
                 </div>
                 <!-- search form -->
@@ -156,18 +156,6 @@
                     </li>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Expense Category</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create","ExpenseCatagories")"><i class="fa fa-circle-o"></i> Add Expense Category</a></li>
-                            <li><a href="@Url.Action("List","ExpenseCatagories")"><i class="fa fa-circle-o"></i> List Of Expense Category</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
                             <i class="fa fa-circle-o text-aqua"></i> <span>Items</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -178,42 +166,7 @@
                             <li><a href="@Url.Action("List","Items")"><i class="fa fa-circle-o"></i> List Of Items</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Expense Items</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create","ExpenseItems")"><i class="fa fa-circle-o"></i> Add Expense Items</a></li>
-                            <li><a href="@Url.Action("List","ExpenseItems")"><i class="fa fa-circle-o"></i> List Of Expense Items</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Organization</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create","Organizations")"><i class="fa fa-circle-o"></i> Add Organization</a></li>
-                            <li><a href="@Url.Action("List","Organizations")"><i class="fa fa-circle-o"></i> List Of Organizations</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Outlet</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create","Outlets")"><i class="fa fa-circle-o"></i> Add Outlet</a></li>
-                            <li><a href="@Url.Action("List","Outlets")"><i class="fa fa-circle-o"></i> List Of Outlets</a></li>
-                        </ul>
-                    </li>
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-circle-o text-aqua"></i> <span>Party</span>
@@ -226,30 +179,81 @@
                             <li><a href="@Url.Action("List","Parties")"><i class="fa fa-circle-o"></i> List Of Parties</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Employee</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create","Employees")"><i class="fa fa-circle-o"></i> Add Employee</a></li>
-                            <li><a href="@Url.Action("List","Employees")"><i class="fa fa-circle-o"></i> List Of Employees</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Employee</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Create","Role")"><i class="fa fa-circle-o"></i> Add Employee</a></li>
-                            <li><a href="@Url.Action("Index","Role")"><i class="fa fa-circle-o"></i> List Of Employees</a></li>
-                        </ul>
-                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-circle-o text-aqua"></i> <span>Expense Category</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Create","ExpenseCatagories")"><i class="fa fa-circle-o"></i> Add Expense Category</a></li>
+                                <li><a href="@Url.Action("List","ExpenseCatagories")"><i class="fa fa-circle-o"></i> List Of Expense Category</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-circle-o text-aqua"></i> <span>Expense Items</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Create","ExpenseItems")"><i class="fa fa-circle-o"></i> Add Expense Items</a></li>
+                                <li><a href="@Url.Action("List","ExpenseItems")"><i class="fa fa-circle-o"></i> List Of Expense Items</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-circle-o text-aqua"></i> <span>Organization</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Create","Organizations")"><i class="fa fa-circle-o"></i> Add Organization</a></li>
+                                <li><a href="@Url.Action("List","Organizations")"><i class="fa fa-circle-o"></i> List Of Organizations</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-circle-o text-aqua"></i> <span>Outlet</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Create","Outlets")"><i class="fa fa-circle-o"></i> Add Outlet</a></li>
+                                <li><a href="@Url.Action("List","Outlets")"><i class="fa fa-circle-o"></i> List Of Outlets</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-circle-o text-aqua"></i> <span>Employee</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Create","Employees")"><i class="fa fa-circle-o"></i> Add Employee</a></li>
+                                <li><a href="@Url.Action("List","Employees")"><i class="fa fa-circle-o"></i> List Of Employees</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-circle-o text-aqua"></i> <span>Role</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Create","Role")"><i class="fa fa-circle-o"></i> Add Role</a></li>
+                                <li><a href="@Url.Action("Index","Role")"><i class="fa fa-circle-o"></i> List Of Roles</a></li>
+                            </ul>
+                        </li>
+                    }
                     <li class="header">OPERATION MODULE</li>
                     <li class="treeview">
                         <a href="#">
