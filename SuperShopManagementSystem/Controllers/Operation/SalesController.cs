@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SuperShopManagementSystem.Controllers.Operation
 {
@@ -39,10 +40,16 @@ namespace SuperShopManagementSystem.Controllers.Operation
             Sale sale = saleBll.GetById(id);
             return View(sale);
         }
-
+        
         public ActionResult ExportPdf(int id)
         {
-            return new ActionAsPdf("DetailsPdf", new { id = id });
+            var cookies = Request.Cookies.AllKeys.ToDictionary(k => k, k => Request.Cookies[k].Value);
+
+            return new ActionAsPdf("DetailsPdf",new { id = id })
+            {
+                FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName,
+                Cookies = cookies
+            };
         }
 
         // GET: Items/Create

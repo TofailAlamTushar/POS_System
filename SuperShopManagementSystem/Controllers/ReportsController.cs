@@ -10,7 +10,7 @@ using Rotativa;
 
 namespace SuperShopManagementSystem.Controllers
 {
-    [Authorize(Roles = "Admin,Employee")]
+    [Authorize(Roles = "Admin")]
     public class ReportsController : Controller
     {
         ReportBll reportBll = new ReportBll();
