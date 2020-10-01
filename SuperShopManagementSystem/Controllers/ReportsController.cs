@@ -7,9 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Rotativa;
+using System.Web.Security;
 
 namespace SuperShopManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ReportsController : Controller
     {
         ReportBll reportBll = new ReportBll();
@@ -158,7 +160,13 @@ namespace SuperShopManagementSystem.Controllers
 
         public ActionResult ExportStockReportPdf()
         {
-            return new ActionAsPdf("StockReportPdf");
+            var cookies = Request.Cookies.AllKeys.ToDictionary(k => k, k => Request.Cookies[k].Value);
+
+            return new ActionAsPdf("StockReportPdf")
+            {
+                FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName,
+                Cookies = cookies
+            };
         }
     }
 }

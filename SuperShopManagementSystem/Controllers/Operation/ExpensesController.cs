@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SuperShopManagementSystem.Controllers.Operation
 {
+    [Authorize(Roles ="Admin")]
     public class ExpensesController : Controller
     {
         ExpenseBll expenseBll = new ExpenseBll();
@@ -62,7 +64,13 @@ namespace SuperShopManagementSystem.Controllers.Operation
         }
         public ActionResult ExportPdf(int id)
         {
-            return new ActionAsPdf("DetailsPdf", new { id = id });
+            var cookies = Request.Cookies.AllKeys.ToDictionary(k => k, k => Request.Cookies[k].Value);
+
+            return new ActionAsPdf("DetailsPdf", new { id = id })
+            {
+                FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName,
+                Cookies = cookies
+            };
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ExpenseCatagoriesController : Controller
     {
         ShopDbContext db = new ShopDbContext();

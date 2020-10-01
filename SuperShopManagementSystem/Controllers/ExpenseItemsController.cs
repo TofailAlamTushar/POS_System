@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SuperShopManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ExpenseItemsController : Controller
     {
         Common common = new Common();

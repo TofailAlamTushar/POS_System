@@ -7,11 +7,16 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SuperShopManagementSystem.Context
 {
-    public class ShopDbContext : DbContext
+    public class ShopDbContext : IdentityDbContext<ApplicationUser>
     {
+        public ShopDbContext()
+            : base("ShopDbContext", throwIfV1Schema: false)
+        {
+        }
         public DbSet <ExpenseItem> ExpenseItems { get; set; }
         public DbSet<ExpenseCatagory> ExpenseCatagories { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
@@ -49,5 +54,11 @@ namespace SuperShopManagementSystem.Context
         }
 
         public DbSet<IncomeVm> IncomeVms { get; set; }
+
+        public static ShopDbContext Create()
+        {
+            return new ShopDbContext();
+        }
+
     }
 }

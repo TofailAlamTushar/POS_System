@@ -54,10 +54,37 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
     </Reference>
@@ -152,7 +179,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BLL\CommonBll.cs" />
     <Compile Include="BLL\EmployeeBll.cs" />
     <Compile Include="BLL\ExpenseCatagoryBll.cs" />
@@ -167,6 +196,7 @@
     <Compile Include="BLL\ReportBll.cs" />
     <Compile Include="BLL\SaleBll.cs" />
     <Compile Include="Context\ShopDbContext.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ExpenseCatagoriesController.cs" />
     <Compile Include="Controllers\ExpenseItemsController.cs" />
@@ -180,6 +210,7 @@
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\Operation\SalesController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="DAL\CommonDal.cs" />
     <Compile Include="DAL\EmployeeDal.cs" />
     <Compile Include="DAL\ExpenseCatagoryDal.cs" />
@@ -196,91 +227,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801151536565_InitialCreate.cs" />
-    <Compile Include="Migrations\201801151536565_InitialCreate.Designer.cs">
-      <DependentUpon>201801151536565_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201908271156411_InitialMigration.cs" />
+    <Compile Include="Migrations\201908271156411_InitialMigration.Designer.cs">
+      <DependentUpon>201908271156411_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801152036536_annotations_add.cs" />
-    <Compile Include="Migrations\201801152036536_annotations_add.Designer.cs">
-      <DependentUpon>201801152036536_annotations_add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801211402146_image_not_required.cs" />
-    <Compile Include="Migrations\201801211402146_image_not_required.Designer.cs">
-      <DependentUpon>201801211402146_image_not_required.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801291215591_Item_and_ItemCategory_Added.cs" />
-    <Compile Include="Migrations\201801291215591_Item_and_ItemCategory_Added.Designer.cs">
-      <DependentUpon>201801291215591_Item_and_ItemCategory_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801301559012_itemCostTypeChanged.cs" />
-    <Compile Include="Migrations\201801301559012_itemCostTypeChanged.Designer.cs">
-      <DependentUpon>201801301559012_itemCostTypeChanged.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801301708288_Annotation_Added_Item.cs" />
-    <Compile Include="Migrations\201801301708288_Annotation_Added_Item.Designer.cs">
-      <DependentUpon>201801301708288_Annotation_Added_Item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801302239596_Org_Outlet_Party_Emp_Model_Added.cs" />
-    <Compile Include="Migrations\201801302239596_Org_Outlet_Party_Emp_Model_Added.Designer.cs">
-      <DependentUpon>201801302239596_Org_Outlet_Party_Emp_Model_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801311141007_NameAddedInOutlet.cs" />
-    <Compile Include="Migrations\201801311141007_NameAddedInOutlet.Designer.cs">
-      <DependentUpon>201801311141007_NameAddedInOutlet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802011129442_Sale_SalsDetail_Added.cs" />
-    <Compile Include="Migrations\201802011129442_Sale_SalsDetail_Added.Designer.cs">
-      <DependentUpon>201802011129442_Sale_SalsDetail_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802011445456_Purchase_PurchaseDetail_Added.cs" />
-    <Compile Include="Migrations\201802011445456_Purchase_PurchaseDetail_Added.Designer.cs">
-      <DependentUpon>201802011445456_Purchase_PurchaseDetail_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802031442021_Purchase_Updated.cs" />
-    <Compile Include="Migrations\201802031442021_Purchase_Updated.Designer.cs">
-      <DependentUpon>201802031442021_Purchase_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802031617504_Purchase_Updated_Twice.cs" />
-    <Compile Include="Migrations\201802031617504_Purchase_Updated_Twice.Designer.cs">
-      <DependentUpon>201802031617504_Purchase_Updated_Twice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802041120383_Purchase_ForaignKey_Solution.cs" />
-    <Compile Include="Migrations\201802041120383_Purchase_ForaignKey_Solution.Designer.cs">
-      <DependentUpon>201802041120383_Purchase_ForaignKey_Solution.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802050018351_Sale_Updated.cs" />
-    <Compile Include="Migrations\201802050018351_Sale_Updated.Designer.cs">
-      <DependentUpon>201802050018351_Sale_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802051519379_Expense_And_ExpenseDetail_Added.cs" />
-    <Compile Include="Migrations\201802051519379_Expense_And_ExpenseDetail_Added.Designer.cs">
-      <DependentUpon>201802051519379_Expense_And_ExpenseDetail_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052009230_ExpenseDetails_Updated.cs" />
-    <Compile Include="Migrations\201802052009230_ExpenseDetails_Updated.Designer.cs">
-      <DependentUpon>201802052009230_ExpenseDetails_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052039218_ExpenseDetails_Updated_twice.cs" />
-    <Compile Include="Migrations\201802052039218_ExpenseDetails_Updated_twice.Designer.cs">
-      <DependentUpon>201802052039218_ExpenseDetails_Updated_twice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052110565_ExpenseItem_Updated.cs" />
-    <Compile Include="Migrations\201802052110565_ExpenseItem_Updated.Designer.cs">
-      <DependentUpon>201802052110565_ExpenseItem_Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052218421_ExpenseDetails_Updated_3rd.cs" />
-    <Compile Include="Migrations\201802052218421_ExpenseDetails_Updated_3rd.Designer.cs">
-      <DependentUpon>201802052218421_ExpenseDetails_Updated_3rd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802052241128_ExpenseDetails_Updated_4th.cs" />
-    <Compile Include="Migrations\201802052241128_ExpenseDetails_Updated_4th.Designer.cs">
-      <DependentUpon>201802052241128_ExpenseDetails_Updated_4th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802072236231_IncomeVm_Added.cs" />
-    <Compile Include="Migrations\201802072236231_IncomeVm_Added.Designer.cs">
-      <DependentUpon>201802072236231_IncomeVm_Added.cs</DependentUpon>
+    <Compile Include="Migrations\201908280604193_role.cs" />
+    <Compile Include="Migrations\201908280604193_role.Designer.cs">
+      <DependentUpon>201908280604193_role.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\ExpenseCatagory.cs" />
@@ -296,10 +253,14 @@
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Outlet.cs" />
     <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\ViewModel\IncomeVm.cs" />
+    <Compile Include="Models\ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\ViewModel\ReportVm.cs" />
+    <Compile Include="Models\ViewModel\RoleViewModel.cs" />
     <Compile Include="Models\ViewModel\StockVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -447,6 +408,13 @@
     <Content Include="Views\Reports\IncomeReportPdf.cshtml" />
     <Content Include="Views\Reports\StockReport.cshtml" />
     <Content Include="Views\Reports\StockReportPdf.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -467,68 +435,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801151536565_InitialCreate.resx">
-      <DependentUpon>201801151536565_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908271156411_InitialMigration.resx">
+      <DependentUpon>201908271156411_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801152036536_annotations_add.resx">
-      <DependentUpon>201801152036536_annotations_add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801211402146_image_not_required.resx">
-      <DependentUpon>201801211402146_image_not_required.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801291215591_Item_and_ItemCategory_Added.resx">
-      <DependentUpon>201801291215591_Item_and_ItemCategory_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801301559012_itemCostTypeChanged.resx">
-      <DependentUpon>201801301559012_itemCostTypeChanged.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801301708288_Annotation_Added_Item.resx">
-      <DependentUpon>201801301708288_Annotation_Added_Item.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801302239596_Org_Outlet_Party_Emp_Model_Added.resx">
-      <DependentUpon>201801302239596_Org_Outlet_Party_Emp_Model_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801311141007_NameAddedInOutlet.resx">
-      <DependentUpon>201801311141007_NameAddedInOutlet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802011129442_Sale_SalsDetail_Added.resx">
-      <DependentUpon>201802011129442_Sale_SalsDetail_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802011445456_Purchase_PurchaseDetail_Added.resx">
-      <DependentUpon>201802011445456_Purchase_PurchaseDetail_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802031442021_Purchase_Updated.resx">
-      <DependentUpon>201802031442021_Purchase_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802031617504_Purchase_Updated_Twice.resx">
-      <DependentUpon>201802031617504_Purchase_Updated_Twice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802041120383_Purchase_ForaignKey_Solution.resx">
-      <DependentUpon>201802041120383_Purchase_ForaignKey_Solution.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802050018351_Sale_Updated.resx">
-      <DependentUpon>201802050018351_Sale_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802051519379_Expense_And_ExpenseDetail_Added.resx">
-      <DependentUpon>201802051519379_Expense_And_ExpenseDetail_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052009230_ExpenseDetails_Updated.resx">
-      <DependentUpon>201802052009230_ExpenseDetails_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052039218_ExpenseDetails_Updated_twice.resx">
-      <DependentUpon>201802052039218_ExpenseDetails_Updated_twice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052110565_ExpenseItem_Updated.resx">
-      <DependentUpon>201802052110565_ExpenseItem_Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052218421_ExpenseDetails_Updated_3rd.resx">
-      <DependentUpon>201802052218421_ExpenseDetails_Updated_3rd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802052241128_ExpenseDetails_Updated_4th.resx">
-      <DependentUpon>201802052241128_ExpenseDetails_Updated_4th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802072236231_IncomeVm_Added.resx">
-      <DependentUpon>201802072236231_IncomeVm_Added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908280604193_role.resx">
+      <DependentUpon>201908280604193_role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
